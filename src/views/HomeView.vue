@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import AppMap from '@/components/AppMap.vue'
+
 </script>
 
 <template>
-  <main>
-    Home
-  </main>
+  <AppMap />
 </template>
+
+<style lang="scss">
+.app-wrapper {
+  position: relative;
+}
+</style>

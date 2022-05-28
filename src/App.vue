@@ -6,12 +6,9 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style>
+<style lang="scss">
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+  position: relative;
+  height: 100vh;
 }
 </style>
