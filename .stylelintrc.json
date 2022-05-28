@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-html",
+    "stylelint-config-recess-order",
+    "stylelint-config-standard-scss",
+    "stylelint-config-recommended-vue"
+  ],
+  "rules": {
+    "comment-empty-line-before": [
+      "always",
+      {
+        "ignore": [
+          "stylelint-commands",
+          "after-comment"
+        ]
+      }
+    ],
+    "max-empty-lines": 2,
+    "color-hex-case": "upper",
+    "max-nesting-depth": 2,
+    "number-leading-zero": "never",
+    "selector-max-universal": 1,
+    "selector-max-type": [
+      0,
+      {
+        "ignore": [
+          "child",
+          "descendant",
+          "compounded"
+        ]
+      }
+    ],
+    "selector-class-pattern": "\\w+",
+    "keyframes-name-pattern": "\\w+",
+    "string-quotes": "single",
+    "scss/at-import-partial-extension": "always"
+  }
+}
