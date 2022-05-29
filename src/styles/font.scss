@@ -1,0 +1,17 @@
+@font-face {
+  font-family: icondemo;
+  font-weight: normal;
+  src:
+    url('@/assets/fonts/icondemo.ttf') format('truetype'),
+    url('@/assets/fonts/icondemo.woff') format('woff'),
+    url('@/assets/fonts/icondemo.svg') format('svg');
+  font-display: block;
+}
+
+.icon-arrow-up:before {
+  content: "\e900";
+}
+
+.icon-arrow-down:before {
+  content: "\e901";
+}
