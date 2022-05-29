@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import VButton from './VButton.vue'
 import { reactive, computed } from 'vue'
+import VButton from './VButton.vue'
+import VPopup from './VPopup.vue'
 
 // states
-const state = reactive({ isClicked: false, show: false })
+const state = reactive({ isClicked: false, isOpened: false })
 
 // computed properties
 const iconName = computed(() => {
@@ -13,6 +14,13 @@ const iconName = computed(() => {
 // Event handlers
 const handleClick = () => {
   state.isClicked = !state.isClicked
+  if (state.isClicked) {
+    state.isOpened = true
+  }
+}
+
+const handleClose = () => {
+  state.isClicked = false
 }
 </script>
 
@@ -26,14 +34,21 @@ const handleClick = () => {
       <v-button icon-name="icon-arrow-down">
         3d
       </v-button>
-      <v-button 
-        :is-active="state.isClicked"
-        :icon-name="iconName"
-        @click="handleClick"
-      >
+      <v-button :is-active="state.isClicked" :icon-name="iconName" @click="handleClick">
         filters
       </v-button>
     </section>
+    <v-popup
+      v-model:show="state.isOpened"
+      height="85%"
+      rounded
+      title="Filters"
+      @close="handleClose"
+    >
+      <template #content>
+        <h1>hello world</h1>
+      </template>
+    </v-popup>
   </div>
 </template>
 
