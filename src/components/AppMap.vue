@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Loader } from "@googlemaps/js-api-loader"
+import { Loader } from '@googlemaps/js-api-loader'
 import { onMounted, onUnmounted, ref } from 'vue'
 import mapData from '@/assets/map/mapdata'
 import markerSvg from '@/assets/marker.svg'
 
-const markers: google.maps.Marker[] = [];
+const markers: google.maps.Marker[] = []
 let mapInstance: google.maps.Map
 
 const root = ref<HTMLElement | null>(null)
@@ -13,7 +13,7 @@ const root = ref<HTMLElement | null>(null)
 function initLoader() {
   const loaderOptions = {
     apiKey: 'AIzaSyA1Krb9T9-F1KMysusQqc3b_Hk6YRL-0YU',
-    version: 'weekly',
+    version: 'weekly'
   }
 
   return {
@@ -61,7 +61,7 @@ async function initMap(el: HTMLElement): Promise<void> {
     //     anchor: marker,
     //     map: mapInstance,
     //     shouldFocus: false
-    //   }) 
+    //   })
     // })
 
     marker.setMap(mapInstance)
@@ -72,13 +72,10 @@ onMounted(async () => {
   await initMap(root.value as HTMLElement)
 })
 
-onUnmounted(() => {
-})
-
 </script>
 
 <template>
-  <div ref="root" class="app-map"></div>
+  <div ref="root" class="app-map" />
 </template>
 
 <style lang="scss">

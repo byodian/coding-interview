@@ -11,6 +11,9 @@ module.exports = {
   'env': {
     'vue/setup-compiler-macros': true
   },
+  'globals': {
+    'google': true
+  },
   'rules': {
     'vue/max-attributes-per-line': [2, {
       'singleline': 7,
@@ -43,6 +46,8 @@ module.exports = {
       objectsInObjects: false
     }],
     'array-bracket-spacing': [2, 'never'],
+    'no-multi-spaces': 2,
+    'no-trailing-spaces': 2,
     'spaced-comment': [2, 'always', {
       'markers': ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ',']
     }],
@@ -61,8 +66,8 @@ module.exports = {
       'max': 1
     }],
     'curly': [2, 'multi-line'],
-    'object-property-newline': ['error', { 
-      'allowAllPropertiesOnSameLine': true 
+    'object-property-newline': ['error', {
+      'allowAllPropertiesOnSameLine': true
     }]
   }
 }
