@@ -1,9 +1,17 @@
+<script lang="ts">
+export default {
+  inheritAttrs: false
+}
+</script>
+
 <script setup lang="ts">
 import { computed } from 'vue'
 
 interface Props {
-  isActive?: boolean,
-  iconName?: string
+  isActive?: boolean;
+  iconName?: string;
+  type?: string;
+  color?: string;
 }
 
 interface Emits {
@@ -14,7 +22,11 @@ interface Emits {
 const emit = defineEmits<Emits>()
 
 // Porps
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+    type: 'button',
+    iconName: '',
+    color: ''
+  })
 
 // computed properties
 const styleButton = computed(() => ({
@@ -30,11 +42,27 @@ const handleClick = () => {
 </script>
 
 <template>
-  <button class="v-button" :style="styleButton" @click="handleClick">
+  <button
+    v-if="props.type === 'button'"
+    class="v-button"
+    :style="styleButton"
+    v-bind="$attrs"
+    @click="handleClick"
+  >
     <span v-if="$slots.default">
       <slot />
     </span>
     <i v-if="props.iconName" :class="['v-icon', props.iconName]" />
+  </button>
+
+  <button
+    v-if="props.type === 'text'"
+    v-bind="$attrs"
+    class="v-button"
+    :style="{ color: props.color }"
+    @click="handleClick"
+  >
+    <slot />
   </button>
 </template>
 
@@ -46,7 +74,6 @@ const handleClick = () => {
   height: 3rem;
   padding: 0 1rem;
   font-size: 1.6rem;
-  color: $color-white;
   cursor: pointer;
   background-color: transparent;
   border: 1px solid $color-white;

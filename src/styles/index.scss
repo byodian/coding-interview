@@ -23,9 +23,28 @@ ul {
   margin-top: 0;
 }
 
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
 button {
+  font-size: inherit;
   padding: 0;
   background-color: transparent;
   border-style: none;
   border-width: 1px;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.flex {
+  display: flex;
+}
+
+.pr-0 {
+  padding-right: 0 !important;
 }

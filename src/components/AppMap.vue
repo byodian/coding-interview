@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { Loader } from '@googlemaps/js-api-loader'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import mapData from '@/assets/map/mapdata'
 import markerSvg from '@/assets/marker.svg'
 
-const markers: google.maps.Marker[] = []
 let mapInstance: google.maps.Map
 
 const root = ref<HTMLElement | null>(null)
@@ -19,15 +18,6 @@ function initLoader() {
   return {
     loader: new Loader(loaderOptions)
   }
-}
-
-function addMarker(position: google.maps.LatLng) {
-  const marker = new google.maps.Marker({
-    position,
-    map: mapInstance
-  })
-
-  markers.push(marker)
 }
 
 // Initialize a google map instance and add some markers
@@ -51,18 +41,6 @@ async function initMap(el: HTMLElement): Promise<void> {
       label: { text: `${point.label}`, color: '#fff', className: 'map-marker-label' },
       icon: markerSvg
     })
-
-    // const infowindow = new google.maps.InfoWindow({
-    //   content: `<h1>Hello world</h1>`
-    // })
-
-    // marker.addListener('click', () => {
-    //   infowindow.open({
-    //     anchor: marker,
-    //     map: mapInstance,
-    //     shouldFocus: false
-    //   })
-    // })
 
     marker.setMap(mapInstance)
   })

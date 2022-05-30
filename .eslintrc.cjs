@@ -30,7 +30,7 @@ module.exports = {
       'allowSingleLine': true
     }],
     'comma-dangle': [2, 'never'],
-        'comma-spacing': [2, {
+    'comma-spacing': [2, {
       'before': false,
       'after': true
     }],
@@ -62,7 +62,7 @@ module.exports = {
       'avoidEscape': true,
       'allowTemplateLiterals': true
     }],
-   'no-multiple-empty-lines': [2, {
+    'no-multiple-empty-lines': [2, {
       'max': 1
     }],
     'curly': [2, 'multi-line'],
