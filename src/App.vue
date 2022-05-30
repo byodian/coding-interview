@@ -9,6 +9,7 @@ import { RouterView } from 'vue-router'
 <style lang="scss">
 #app {
   position: relative;
+  max-width: 41.4rem;
   height: 100vh;
 }
 </style>

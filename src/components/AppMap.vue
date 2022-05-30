@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Loader } from '@googlemaps/js-api-loader'
 import { onMounted, ref } from 'vue'
-import mapData from '@/assets/map/mapdata'
+import mapData from '@/config/mapdata'
 import markerSvg from '@/assets/marker.svg'
 
 let mapInstance: google.maps.Map

@@ -63,9 +63,9 @@ const onClickOverlay = () => {
   <div v-if="props.show" class="v-overlay" @click="onClickOverlay" />
 
   <div v-if="props.show" class="v-popup" :style="stylePopupContent">
-    <p class="v-popup__title">
+    <div class="v-popup__title">
       {{ props.title }}
-    </p>
+    </div>
 
     <div v-if="closeable" class="v-close">
       <span class="v-close-inner" />
@@ -103,19 +103,24 @@ const onClickOverlay = () => {
   left: 0;
   width: 100%;
   padding: 0 1.6rem;
-  overflow-y: scroll;
   background-color: $overlay-content-background-color;
   box-shadow: 0 -1px 15px rgb(0 0 0 / 8%);
 
   &__title {
-    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $popup-header-height;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     text-align: center;
   }
 
   &__content {
-    height: 100%;
-    margin-top: 2rem;
+    max-height: calc(100% - $popup-header-height - $popup-footer-height);
+    overflow-y: scroll;
     margin-bottom: 1.5rem;
   }
 
@@ -126,7 +131,7 @@ const onClickOverlay = () => {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    height: 13.6rem;
+    height: $popup-footer-height;
     padding: 6rem 1.6rem 0;
     background: linear-gradient(180deg, rgb(255 255 255 / .01%) 0%, #FFF 27.77%);
   }

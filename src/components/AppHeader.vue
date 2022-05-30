@@ -5,7 +5,7 @@ import VPopup from './VPopup.vue'
 import VSlider from './VSlider.vue'
 import VFieldItem from './VFieldItem.vue'
 import VFieldContent from './VFieldContent.vue'
-import { beedRoomData, bathroomData, garageData } from '@/config/data'
+import { beedRoomData, bathroomData, garageData } from '@/config/filterData'
 import { useFilterStore } from '@/stores/index'
 import { setItem, clearItems } from '@/utils/localstorage'
 import { isUnEmpty } from '@/utils/common'
@@ -204,6 +204,7 @@ onUnmounted(() => {
   &__button-group {
     display: flex;
     flex: 1;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 }
