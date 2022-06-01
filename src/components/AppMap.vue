@@ -11,7 +11,7 @@ const root = ref<HTMLElement | null>(null)
 // Create google map loader
 function initLoader() {
   const loaderOptions = {
-    apiKey: 'AIzaSyA1Krb9T9-F1KMysusQqc3b_Hk6YRL-0YU',
+    apiKey: import.meta.env.VITE_GOOGLEMAPKEY,
     version: 'weekly'
   }
 

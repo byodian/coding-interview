@@ -24,6 +24,14 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 - node: v14.17.6
 - npm: 8.6.0
 
+**Creat `.env.local` in the project of root directory**
+
+`.env.local`
+
+```
+VITE_GOOGLEMAPKEY="your_map_key"
+```
+
 ### Install Dependencies
 
 ```sh
