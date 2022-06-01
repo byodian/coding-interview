@@ -90,7 +90,8 @@ const onClickOverlay = () => {
 
 %box-shared {
   left: 50%;
-  width: $page-width;
+  width: 100%;
+  max-width: $page-width;
   transform: translateX(-50%);
 }
 
