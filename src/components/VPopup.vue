@@ -88,11 +88,18 @@ const onClickOverlay = () => {
   background-color: $secondary-color;
 }
 
+%box-shared {
+  left: 50%;
+  width: $page-width;
+  transform: translateX(-50%);
+}
+
 .v-overlay {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+
+  @extend %box-shared;
+
   height: 100%;
   background-color: $overlay-background-color;
 }
@@ -100,9 +107,10 @@ const onClickOverlay = () => {
 .v-popup {
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
   padding: 0 1.6rem;
+
+  @extend %box-shared;
+
   background-color: $overlay-content-background-color;
   box-shadow: 0 -1px 15px rgb(0 0 0 / 8%);
 
@@ -111,8 +119,7 @@ const onClickOverlay = () => {
     align-items: center;
     justify-content: center;
     height: $popup-header-height;
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+    padding: 3rem 0 2rem;
     font-size: 1.8rem;
     font-weight: bold;
     text-align: center;
@@ -120,8 +127,9 @@ const onClickOverlay = () => {
 
   &__content {
     max-height: calc(100% - $popup-header-height - $popup-footer-height);
-    overflow-y: scroll;
     margin-bottom: 1.5rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   &__footer {

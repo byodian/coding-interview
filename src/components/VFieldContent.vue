@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
 import type { List } from './type'
 
 // Types
@@ -43,10 +42,12 @@ const onEmit = (emitedValue: List) => {
 }
 
 // Event handlers
+// 多选按钮点击事件
 const handleMultipleClick = (id: Id) => {
   if (id === '') {
     resetFields()
   } else {
+    // 对当前选项 checked 布尔值做取反操作
     const emitedValue = props.list.map(item => item.value === id
       ? { ...item, checked: !item.checked }
       : item
@@ -55,11 +56,12 @@ const handleMultipleClick = (id: Id) => {
     onEmit(emitedValue)
   }
 }
-
+// 单选按钮点击事件
 const handleSingleClick = (id: Id) => {
   if (id === '') {
     resetFields()
   } else {
+    // 设置当前点击选项 checked 布尔值为 true
     const emitedValue = props.list.map(item => item.value === id
       ? { ...item, checked: true }
       : { ...item, checked: false }

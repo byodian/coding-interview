@@ -54,8 +54,8 @@ const handleClick = () => {
     state.isOpened = true
 
     state.garageOption = isUnEmpty(store.garage) ? store.garage : garageData
-    state.bedroomsOption = store.bedrooms.length > 0 ? store.bedrooms : beedRoomData
-    state.bathroomOption = store.bathroom.length > 0 ? store.bathroom : bathroomData
+    state.bedroomsOption = isUnEmpty(store.bedrooms) ? store.bedrooms : beedRoomData
+    state.bathroomOption = isUnEmpty(store.bathroom) ? store.bathroom : bathroomData
     state.keywordValue = store.keyword ? store.keyword : ''
   }
 }
@@ -72,6 +72,7 @@ const handleApply = () => {
   })
 }
 
+// 重置筛选条件
 const handleClear = () => {
   state.isGarageEmpty = true
   state.isBathroomEmpty = true
@@ -137,43 +138,41 @@ onUnmounted(() => {
       @close="handleClose"
     >
       <template #content>
-        <div class="popup-content">
-          <v-field-item label="Price Range">
-            <v-slider />
-          </v-field-item>
-          <v-field-item label="Description Contains Keywords">
-            <input
-              id="v-field__keyword"
-              :value="state.keywordValue"
-              class="v-field__keyword"
-              type="text"
-              placeholder="Waterfront, Pool, FirePlace..."
-              @input="handleInput"
-            >
-          </v-field-item>
-          <v-field-item label="Bedrooms">
-            <v-field-content
-              v-model:isEmpty="state.isBedroomsEmpty"
-              :list="state.bedroomsOption"
-              multiple
-              @click="handleMultipleChange"
-            />
-          </v-field-item>
-          <v-field-item label="Bathroom">
-            <v-field-content
-              v-model:isEmpty="state.isBathroomEmpty"
-              :list="state.bathroomOption"
-              @click="handleBathroomClick"
-            />
-          </v-field-item>
-          <v-field-item label="Garage/Parking">
-            <v-field-content
-              v-model:isEmpty="state.isGarageEmpty"
-              :list="state.garageOption"
-              @click="handleGarageClick"
-            />
-          </v-field-item>
-        </div>
+        <v-field-item label="Price Range">
+          <v-slider />
+        </v-field-item>
+        <v-field-item label="Description Contains Keywords">
+          <input
+            id="v-field__keyword"
+            :value="state.keywordValue"
+            class="v-field__keyword"
+            type="text"
+            placeholder="Waterfront, Pool, FirePlace..."
+            @input="handleInput"
+          >
+        </v-field-item>
+        <v-field-item label="Bedrooms">
+          <v-field-content
+            v-model:isEmpty="state.isBedroomsEmpty"
+            :list="state.bedroomsOption"
+            multiple
+            @click="handleMultipleChange"
+          />
+        </v-field-item>
+        <v-field-item label="Bathroom">
+          <v-field-content
+            v-model:isEmpty="state.isBathroomEmpty"
+            :list="state.bathroomOption"
+            @click="handleBathroomClick"
+          />
+        </v-field-item>
+        <v-field-item label="Garage/Parking">
+          <v-field-content
+            v-model:isEmpty="state.isGarageEmpty"
+            :list="state.garageOption"
+            @click="handleGarageClick"
+          />
+        </v-field-item>
       </template>
       <template #footer>
         <div class="popup-content__buttons flex">
