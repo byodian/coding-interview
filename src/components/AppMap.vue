@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Loader } from '@googlemaps/js-api-loader'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import mapData from '@/config/mapdata'
 import markerSvg from '@/assets/marker.svg'
 
-let mapInstance: google.maps.Map
+let mapInstance: google.maps.Map | null
 
 const root = ref<HTMLElement | null>(null)
 
@@ -48,6 +48,10 @@ async function initMap(el: HTMLElement): Promise<void> {
 
 onMounted(async () => {
   await initMap(root.value as HTMLElement)
+})
+
+onUnmounted(() => {
+  mapInstance = null
 })
 
 </script>
