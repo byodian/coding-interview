@@ -4,6 +4,21 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import mapData from '@/config/mapdata'
 import markerSvg from '@/assets/marker.svg'
 
+import { useFilterStore } from '@/stores/index'
+
+let timer
+const store = useFilterStore()
+
+store.$subscribe((mutation, state) => {
+  if (state.filters !== '') {
+    setTimeout(() => {
+      alert('筛选完成')
+    })
+
+    store.setFilter('')
+  }
+})
+
 let mapInstance: google.maps.Map | null
 
 const root = ref<HTMLElement | null>(null)

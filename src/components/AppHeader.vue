@@ -9,6 +9,8 @@ import { beedRoomData, bathroomData, garageData } from '@/config/filterData'
 import { useFilterStore } from '@/stores/index'
 import { setItem, clearItems } from '@/utils/localstorage'
 import { isUnEmpty } from '@/utils/common'
+import { getItem } from '@/utils/localstorage'
+import { isDef } from '@/utils/common'
 
 import type { List } from './type'
 
@@ -16,6 +18,27 @@ let timer: number
 
 // store
 const store = useFilterStore()
+
+// Initial store
+function initStore() {
+  if (isDef(getItem('garage'))) {
+    store.setGarage(getItem('garage'))
+  }
+
+  if (isDef(getItem('bathroom'))) {
+    store.setBathroom(getItem('bathroom'))
+  }
+
+  if (isDef(getItem('bedrooms'))) {
+    store.setBedRooms(getItem('bedrooms'))
+  }
+
+  if (isDef(getItem('keyword'))) {
+    store.setKeyword(getItem('keyword'))
+  }
+}
+
+initStore()
 
 interface State {
   isBedroomsEmpty: boolean,
@@ -67,9 +90,7 @@ const handleClose = () => {
 
 const handleApply = () => {
   handleClose()
-  timer = setTimeout(() => {
-    alert('已完成筛选操作')
-  })
+  store.setFilter('apply')
 }
 
 // 重置筛选条件
@@ -130,13 +151,7 @@ onUnmounted(() => {
         filters
       </v-button>
     </section>
-    <v-popup
-      v-model:show="state.isOpened"
-      height="85%"
-      rounded
-      title="Filters"
-      @close="handleClose"
-    >
+    <v-popup v-model:show="state.isOpened" height="85%" rounded title="Filters" @close="handleClose">
       <template #content>
         <v-field-item label="Price Range">
           <v-slider />
@@ -179,12 +194,7 @@ onUnmounted(() => {
           <v-button type="text" color="#28A3B3" @click="handleClear">
             Clear
           </v-button>
-          <v-button
-            type="text"
-            color="#28A3B3"
-            :class="'pr-0'"
-            @click="handleApply"
-          >
+          <v-button type="text" color="#28A3B3" :class="'pr-0'" @click="handleApply">
             Apply
           </v-button>
         </div>
@@ -219,5 +229,4 @@ onUnmounted(() => {
     opacity: .8;
   }
 }
-
 </style>

@@ -9,6 +9,7 @@ interface FilterState {
   bedrooms: List;
   bathroom: List;
   garage: List;
+  filters: string;
 }
 
 export const useFilterStore = defineStore({
@@ -19,7 +20,8 @@ export const useFilterStore = defineStore({
     maxPrice: undefined,
     bedrooms: [],
     bathroom: [],
-    garage: []
+    garage: [],
+    filters: ''
   }),
   actions: {
     setBedRooms(options: List) {
@@ -33,6 +35,9 @@ export const useFilterStore = defineStore({
     },
     setKeyword(value: string) {
       this.keyword = value
+    },
+    setFilter(value: string) {
+      this.filters = value
     }
   }
 })
