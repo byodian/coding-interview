@@ -108,7 +108,8 @@ const onClickOverlay = () => {
 .v-popup {
   position: fixed;
   bottom: 0;
-  padding: 0 1.6rem;
+
+  // padding: 0 1.6rem;
 
   @extend %box-shared;
 
@@ -120,7 +121,7 @@ const onClickOverlay = () => {
     align-items: center;
     justify-content: center;
     height: $popup-header-height;
-    padding: 3rem 0 2rem;
+    padding: 3rem 1.6rem 2rem;
     font-size: 1.8rem;
     font-weight: bold;
     text-align: center;
@@ -128,21 +129,20 @@ const onClickOverlay = () => {
 
   &__content {
     max-height: calc(100% - $popup-header-height - $popup-footer-height);
-    margin-bottom: 1.5rem;
+    padding: 0 1.6rem;
     overflow-x: hidden;
     overflow-y: scroll;
   }
 
   &__footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     width: 100%;
     height: $popup-footer-height;
-    padding: 6rem 1.6rem 0;
+    padding: 0 1.6rem;
     background: linear-gradient(180deg, rgb(255 255 255 / .01%) 0%, #FFF 27.77%);
+    box-shadow: 0 -1px 5px rgb(0 0 0 / 10%);
   }
 }
 
